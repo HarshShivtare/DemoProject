@@ -1,0 +1,61 @@
+package org.generalstore.pageobjects;
+
+import java.util.List;
+
+import org.generalstore.utils.AndroidActions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.AndroidDriver;
+
+public class ProductCatologue extends AndroidActions {
+
+	AndroidDriver driver;
+
+	public ProductCatologue(AndroidDriver driver) {
+		super(driver);
+		this.driver = driver;
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	}
+
+	@AndroidFindBy(id = "com.androidsample.generalstore:id/productAddCart")
+	private List<WebElement> btnAddToCart;
+
+	@AndroidFindBy(id = "com.androidsample.generalstore:id/productName")
+	private List<WebElement> productname;
+
+	@AndroidFindBy(id = "com.androidsample.generalstore:id/appbar_btn_cart")
+	private WebElement btnCart;
+
+	public void addProductToCart(int i) {
+		btnAddToCart.get(i).click();
+	}
+
+	public void selectProduct(String name) {
+		int count = productname.size();
+
+		for (int i = 0; i < count; i++) {
+			String pname = productname.get(i).getText();
+			if (pname.equalsIgnoreCase(name)) {
+				btnAddToCart.get(i).click();
+			}
+		}
+	}
+
+	public void selectMultiProduct() {
+		int pcount = productname.size();
+		for (int i = 0; i < pcount; i++) {
+			waitForEle(btnAddToCart.get(i));
+			btnAddToCart.get(i).click();
+		}
+		navigateToCart();
+	}
+
+	public void navigateToCart() {
+		btnCart.click();
+	}
+
+}

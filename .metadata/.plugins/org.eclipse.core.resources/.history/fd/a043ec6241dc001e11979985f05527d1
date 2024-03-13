@@ -1,0 +1,35 @@
+package eComProject;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import ecom.TestUtils.Base;
+
+
+public class ProductAmountTest extends Base {
+		
+	@Test
+	public void productAmount() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		try {
+			log.fillform();
+		} catch (InterruptedException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		procat.selectMultiProduct();
+		Thread.sleep(3000);
+
+		cp.verifyCartPage("Cart");
+
+		double totalprice = cp.sumOfProductPrices();
+
+		double totalamount = cp.totalProductAmt();
+
+		Assert.assertEquals(totalprice, totalamount);
+	}
+}

@@ -1,0 +1,93 @@
+package Mobile;
+package Extent.Reports;
+
+import org.testng.annotations.Test;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentReporter;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
+
+public class Reporter {
+
+
+
+	public class NewTest {
+		ExtentReports extent=new ExtentReports();
+		String path=System.getProperty("user.dir")+"//reportsdata//index.html";
+		ExtentSparkReporter spark=new ExtentSparkReporter(path);
+		
+		
+		
+
+	  @Test
+	  public void f1() {
+		  
+		  ExtentTest t=extent.createTest("Launch Browser");
+		  t.log(Status.PASS, "Launch");
+		  t.pass("Launch");
+		  t.assignCategory("Regression test");
+	  }
+	  @Test
+	  public void f2() {
+		  
+		  ExtentTest t=extent.createTest("Login Browser");
+		  t.log(Status.PASS, "Login Browser");
+		  t.info("Alert popup after login");
+		  t.pass("Alert handle by using closing it");
+		  t.warning("Alert popup warning display ");
+	  }
+	  @Test
+	  public void f3() {
+		  
+		  ExtentTest t=extent.createTest("Home Browser");
+		  t.skip("Home skipped");
+		  t.assignAuthor("User1 f3");
+		
+		 
+	  }
+	  
+	  @Test
+	  public void f4() {
+		  
+		  ExtentTest t=extent.createTest("Dasboard");
+		  t.pass("Dasboard display");
+	  }
+	  @Test
+	  public void f5() {
+		  
+		  ExtentTest t=extent.createTest("close broswer");
+		  t.fail("failed broswer close  display");
+		  t.info("Display login page");
+		 
+	  }
+	  @Test
+	  public void f6() {
+		  
+		  ExtentTest t=extent.createTest("close broswer");
+		  t.assignCategory("Smoke test");
+		  t.assignDevice("Mobile Testing");
+		  
+	  }
+	  @BeforeTest
+	  public void beforeTest() {
+			
+		extent.attachReporter(spark);
+		spark.config().setReportName("Automation_Testing");
+		spark.config().setDocumentTitle("Document Demo Project");
+		spark.config().setTheme(Theme.STANDARD);
+		spark.config().setTimeStampFormat("EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'");
+		
+	  }
+
+	  @AfterTest
+	  public void afterTest() {
+		  extent.flush();
+		  
+	  }
+
+	}
+}

@@ -1,0 +1,26 @@
+package ecom.TestUtils;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+
+public class ExtentReporterT {
+
+	static ExtentReports extent;
+
+	public static ExtentReports getReporter() {
+
+		String path = System.getProperty("user.dir") + "\\reports\\index.html";
+		ExtentSparkReporter esr = new ExtentSparkReporter(path);
+		esr.config().setDocumentTitle("Ecom Results");
+		esr.config().setReportName("Automation suite Results");
+		esr.config().setTheme(Theme.STANDARD);
+		esr.config().setTimeStampFormat("EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'");
+
+		extent = new ExtentReports();
+		extent.attachReporter(esr);
+		extent.setSystemInfo("Tester", "H");
+
+		return extent;
+	}
+}

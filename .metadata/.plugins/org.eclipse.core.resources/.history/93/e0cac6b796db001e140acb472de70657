@@ -1,0 +1,27 @@
+package eComProject;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+
+public class ProductAmountTest extends LoginTest {
+		
+	@Test
+	public void productAmount() throws InterruptedException {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		log.fillform();
+		procat.selectMultiProduct();
+		Thread.sleep(3000);
+
+		cp.verifyCartPage("Cart");
+
+		double totalprice = cp.sumOfProductPrices();
+
+		double totalamount = cp.totalProductAmt();
+
+		Assert.assertEquals(totalprice, totalamount);
+	}
+}

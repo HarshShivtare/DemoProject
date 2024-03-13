@@ -1,0 +1,52 @@
+package eComProject;
+
+import java.io.IOException;
+import java.time.Duration;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import ecom.TestUtils.Base;
+import ecom.TestUtils.Listenerss;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+
+@Listeners({Listenerss.class })
+@Feature("Login Tests")
+@Severity(SeverityLevel.CRITICAL)
+@Owner("Tester1")
+public class LoginTest extends Base {
+
+	@BeforeMethod(alwaysRun=true)
+	public void homeScreen() throws InterruptedException {
+		Thread.sleep(2000);
+		login.startActivity();
+
+//		Activity act = new Activity("com.androidsample.generalstore","com.androidsample.generalstore.SplashActivity");
+//		((JavascriptExecutor)driver).executeScript("mobile: startActivity",
+//				ImmutableMap.of("intent","com.androidsample.generalstore/com.androidsample.generalstore.SplashActivity"));
+	}
+
+	@Test(groups= {"smoke"},description="Error toast validation test")
+	public void errorToast() throws InterruptedException {
+		// login = new LoginFormPage(driver);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.hideKeyboard();
+		login.selectGender("female");
+		login.selectCountry("Argentina");
+		login.login();
+		Thread.sleep(1500);
+		login.verifytoastmessage("Please enter your name");
+		//fail the test
+		//login.verifytoastmessage("Please your name");
+		Thread.sleep(2000);
+	}
+
+	@Test(dependsOnMethods="errorToast",groups= {"smoke"},description="Login test")
+	public void submitForm() throws InterruptedException, IOException {
+		log.fillform();
+	}
+
+}

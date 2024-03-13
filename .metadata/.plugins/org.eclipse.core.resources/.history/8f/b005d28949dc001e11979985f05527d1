@@ -1,0 +1,24 @@
+package eComProject;
+
+import java.io.IOException;
+
+import org.testng.annotations.Test;
+
+import ecom.TestUtils.Base;
+
+
+public class AddToCart extends Base {
+	
+	@Test
+	public void addtoCart() throws InterruptedException, IOException {
+
+		log.fillform();
+		andact.scrollToElement("Jordan 6 Rings");
+		procat.selectProduct("Jordan 6 Rings");
+		procat.navigateToCart();
+		Thread.sleep(2000);
+		cp.verifyCartPage("Cart");
+		cp.verifyProduct("Jordan 6 Rings");
+	}
+
+}

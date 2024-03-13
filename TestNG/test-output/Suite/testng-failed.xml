@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="2" parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <parameter name="beforTest" value="xxxx"/>
+  <listeners>
+    <listener class-name="testng.Listentome"/>
+  </listeners>
+  <test thread-count="2" parallel="tests" name="Test2(failed)">
+    <parameter name="withinTest" value="yyyy"/>
+    <classes>
+      <class name="testng.Basic2">
+        <methods>
+          <include name="fail"/>
+        </methods>
+      </class> <!-- testng.Basic2 -->
+    </classes>
+  </test> <!-- Test2(failed) -->
+</suite> <!-- Failed suite [Suite] -->

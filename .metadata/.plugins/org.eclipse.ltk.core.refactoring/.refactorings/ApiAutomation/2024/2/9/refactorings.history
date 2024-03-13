@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;eComProject.Orders&apos; to &apos;OrdersRequest&apos;&#x0D;&#x0A;- Original project: &apos;ApiAutomation&apos;&#x0D;&#x0A;- Original element: &apos;eComProject.Orders&apos;&#x0D;&#x0A;- Renamed element: &apos;eComProject.OrdersRequest&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Orders&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/test\/java=/test=/true=/=/optional=/true=/=/maven.pomderived=/true=/&lt;eComProject{Orders.java[Orders" matchStrategy="1" name="OrdersRequest" qualified="false" references="true" similarDeclarations="false" stamp="1708945877299" textual="false" version="1.0"/>
+</session>

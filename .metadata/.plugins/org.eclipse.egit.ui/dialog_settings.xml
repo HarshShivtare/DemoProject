@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel" value="0"/>
+	<item key="GitSelectRepositoryPage.lastRepository" value="F:\Harshal\Testing\Automation\Performance-framework\littera-automation-loadtest\.git"/>
+	<list key="EGit.KnownHosts">
+		<item value="git.eclipse.org"/>
+		<item value="github.com"/>
+		<item value="bitbucket.org"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/HarshalShivtare/E-commerce.git"/>
+		<item value="https://Harshal@github.com/HarshalShivtare/E-commerce.git"/>
+		<item value="https://github.com/Littera-Education/littera-automation-loadtest.git"/>
+	</list>
+	<list key="CommitDialog.authorValues">
+		<item value="HarshalShivtare &lt;harshal@bigkittylabs.com&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="HarshalShivtare &lt;harshal@bigkittylabs.com&gt;"/>
+	</list>
+	<section name="GitImportWizard">
+	</section>
+	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
+		<item key="MAIN_SASH_FORM_ORIENTATION_VERTICAL" value="false"/>
+		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="200,200"/>
+		<item key="STAGING_SASH_FORM_WEIGHT" value="200,200"/>
+		<item key="sortItemState" value="false"/>
+	</section>
+	<section name="GitCommitMessageComponent">
+		<list key="C:\Users\Lenovo\eclipse-workspace\MobileAutomation\.git">
+			<item value="true"/>
+			<item value="HarshalShivtare &lt;harshal@bigkittylabs.com&gt;"/>
+			<item value="changes to the code"/>
+			<item value="HarshalShivtare &lt;harshal@bigkittylabs.com&gt;"/>
+			<item value="88289e5acfed51b3585e012f4bed8b9e99c92e9a"/>
+			<item value="0"/>
+			<item value="false"/>
+			<item value=""/>
+		</list>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.pull.PullResultDialog.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="537"/>
+		<item key="DIALOG_Y_ORIGIN" value="245"/>
+	</section>
+</section>

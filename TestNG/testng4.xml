@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="2">
+	<listeners><listener class-name="testng.Listentome"></listener></listeners>
+	<parameter name="beforTest" value="xxxx"></parameter>
+  <test thread-count="5" name="Test" parallel="classes" >
+	  <groups><run><include name="Smoke"></include></run></groups>
+    <classes>
+		
+      <class name="testng.Advanced"/> 
+      <class name="testng.Basics"/>
+      <class name="testng.Basic2"/>
+    </classes>
+  </test>
+  <test thread-count="5" name="Test2">
+	  	  <parameter name="withinTest" value="yyyy"></parameter>
+    <classes>
+      <class name="testng.Basic2">
+      </class>
+      
+    </classes>
+  </test>
+  <!-- Test -->
+</suite> <!-- Suite -->

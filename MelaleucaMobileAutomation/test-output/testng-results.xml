@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-01-30T18:50:16 IST" name="Suite" finished-at="2024-01-30T18:51:16 IST" duration-ms="60177">
+    <groups>
+    </groups>
+    <test started-at="2024-01-30T18:50:16 IST" name="Test" finished-at="2024-01-30T18:51:16 IST" duration-ms="60177">
+      <class name="Melaleuca.mobileAutomation.Test.SignInTest">
+        <test-method is-config="true" signature="startMelaluaca()[pri:0, instance:Melaleuca.mobileAutomation.Test.SignInTest@7fd50002]" started-at="2024-01-30T18:50:16 IST" name="startMelaluaca" finished-at="2024-01-30T18:50:23 IST" duration-ms="6333" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startMelaluaca -->
+        <test-method signature="AndroidLogin(java.util.HashMap)[pri:0, instance:Melaleuca.mobileAutomation.Test.SignInTest@7fd50002]" started-at="2024-01-30T18:50:23 IST" name="AndroidLogin" data-provider="getData" finished-at="2024-01-30T18:51:16 IST" duration-ms="52935" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{password=Password1, username=MSATestUA25}]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.UnsupportedCommandException">
+            <message>
+              <![CDATA[Unknown mobile command "arguments[0].scrollIntoView(true);". Only shell, execEmuConsoleCommand, dragGesture, flingGesture, doubleClickGesture, clickGesture, longClickGesture, pinchCloseGesture, pinchOpenGesture, swipeGesture, scrollGesture, scrollBackTo, scroll, viewportScreenshot, viewportRect, deepLink, startLogsBroadcast, stopLogsBroadcast, deviceidle, acceptAlert, dismissAlert, batteryInfo, deviceInfo, getDeviceTime, changePermissions, getPermissions, performEditorAction, startScreenStreaming, stopScreenStreaming, getNotifications, openNotifications, listSms, type, replaceElementValue, pushFile, pullFile, pullFolder, deleteFile, isAppInstalled, queryAppState, activateApp, removeApp, terminateApp, installApp, clearApp, backgroundApp, getCurrentActivity, getCurrentPackage, startActivity, startService, stopService, broadcast, getContexts, getAppStrings, installMultipleApks, lock, unlock, isLocked, refreshGpsCache, startMediaProjectionRecording, isMediaProjectionRecordingRunning, stopMediaProjectionRecording, getConnectivity, setConnectivity, toggleGps, isGpsEnabled, hideKeyboard, isKeyboardShown, pressKey, getDisplayDensity, getSystemBars, fingerprint, sendSms, gsmCall, gsmSignal, gsmVoice, powerAc, powerCapacity, networkSpeed, sensorSet, getPerformanceData, getPerformanceDataTypes, statusBar, screenshots, scheduleAction, getActionHistory, unscheduleAction, getUiMode, setUiMode, sendTrimMemory commands are supported.
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '14.1.2', java.version: '17.0.9'
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [02c4a64c-e98a-4a4d-845f-916f796869a4, executeScript {args=[{element-6066-11e4-a52e-4f735466cecf=00000000-0000-0211-ffff-ffff0000072d}], script=arguments[0].scrollIntoView(true);}]
+Capabilities {appium:app: /Users/apple/eclipse-worksp..., appium:appPackage: com.melaleuca.shopping, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {app: /Users/apple/eclipse-worksp..., automationName: UIAutomator2, deviceName: Pixel 6, platformName: ANDROID}, appium:deviceApiLevel: 30, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone_x86, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 420, appium:deviceScreenSize: 1080x2400, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.625, appium:platformVersion: 11, appium:statBarHeight: 63, appium:takesScreenshot: true, appium:viewportRect: {height: 2337, left: 0, top: 63, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
+Session ID: 02c4a64c-e98a-4a4d-845f-916f796869a4]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.UnsupportedCommandException: Unknown mobile command "arguments[0].scrollIntoView(true);". Only shell, execEmuConsoleCommand, dragGesture, flingGesture, doubleClickGesture, clickGesture, longClickGesture, pinchCloseGesture, pinchOpenGesture, swipeGesture, scrollGesture, scrollBackTo, scroll, viewportScreenshot, viewportRect, deepLink, startLogsBroadcast, stopLogsBroadcast, deviceidle, acceptAlert, dismissAlert, batteryInfo, deviceInfo, getDeviceTime, changePermissions, getPermissions, performEditorAction, startScreenStreaming, stopScreenStreaming, getNotifications, openNotifications, listSms, type, replaceElementValue, pushFile, pullFile, pullFolder, deleteFile, isAppInstalled, queryAppState, activateApp, removeApp, terminateApp, installApp, clearApp, backgroundApp, getCurrentActivity, getCurrentPackage, startActivity, startService, stopService, broadcast, getContexts, getAppStrings, installMultipleApks, lock, unlock, isLocked, refreshGpsCache, startMediaProjectionRecording, isMediaProjectionRecordingRunning, stopMediaProjectionRecording, getConnectivity, setConnectivity, toggleGps, isGpsEnabled, hideKeyboard, isKeyboardShown, pressKey, getDisplayDensity, getSystemBars, fingerprint, sendSms, gsmCall, gsmSignal, gsmVoice, powerAc, powerCapacity, networkSpeed, sensorSet, getPerformanceData, getPerformanceDataTypes, statusBar, screenshots, scheduleAction, getActionHistory, unscheduleAction, getUiMode, setUiMode, sendTrimMemory commands are supported.
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '14.1.2', java.version: '17.0.9'
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [02c4a64c-e98a-4a4d-845f-916f796869a4, executeScript {args=[{element-6066-11e4-a52e-4f735466cecf=00000000-0000-0211-ffff-ffff0000072d}], script=arguments[0].scrollIntoView(true);}]
+Capabilities {appium:app: /Users/apple/eclipse-worksp..., appium:appPackage: com.melaleuca.shopping, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {app: /Users/apple/eclipse-worksp..., automationName: UIAutomator2, deviceName: Pixel 6, platformName: ANDROID}, appium:deviceApiLevel: 30, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone_x86, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 420, appium:deviceScreenSize: 1080x2400, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.625, appium:platformVersion: 11, appium:statBarHeight: 63, appium:takesScreenshot: true, appium:viewportRect: {height: 2337, left: 0, top: 63, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
+Session ID: 02c4a64c-e98a-4a4d-845f-916f796869a4
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:185)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:134)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:238)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:519)
+at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:464)
+at Melaleuca.mobileAutomation.Test.SignInTest.AndroidLogin(SignInTest.java:72)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:819)
+at org.testng.TestRunner.run(TestRunner.java:619)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+at org.testng.TestNG.runSuites(TestNG.java:1134)
+at org.testng.TestNG.run(TestNG.java:1101)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.UnsupportedCommandException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AndroidLogin -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Melaleuca.mobileAutomation.Test.SignInTest@7fd50002]" started-at="2024-01-30T18:51:16 IST" name="tearDown" finished-at="2024-01-30T18:51:16 IST" duration-ms="400" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Melaleuca.mobileAutomation.Test.SignInTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

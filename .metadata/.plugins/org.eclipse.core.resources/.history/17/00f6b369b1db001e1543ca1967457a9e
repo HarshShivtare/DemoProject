@@ -1,0 +1,9 @@
+package test;
+
+public class Matrix {
+
+	public static void main(String[] args) {
+		
+		int ab [][] = {{3,5,6},{5,6,8},{11,5,-8}};
+	}
+}

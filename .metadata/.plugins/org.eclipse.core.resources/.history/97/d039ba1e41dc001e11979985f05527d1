@@ -1,0 +1,33 @@
+package ecom.global.setup;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
+
+import ecom.TestUtils.Base;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+
+public class Login extends Base {
+	AndroidDriver driver;
+	
+	public Login(AndroidDriver driver) {
+		this.driver = driver;
+	}
+	
+	public void fillform() throws InterruptedException, IOException {
+		
+		List<HashMap<String, String>> data = login.getJsonData(System.getProperty("user.dir")+"//src//test//java//testData//credentials.json");
+		String name = data.get(0).get("name");
+		String gender = data.get(0).get("gender");
+		String country = data.get(0).get("country");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		login.inputName(name);
+		driver.hideKeyboard();
+		login.selectGender(gender);
+		login.selectCountry(country);
+		login.login();
+		Thread.sleep(2000);
+	}
+}

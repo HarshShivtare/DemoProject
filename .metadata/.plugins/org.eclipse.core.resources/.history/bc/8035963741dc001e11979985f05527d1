@@ -1,0 +1,43 @@
+package eComProject;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.testng.annotations.Test;
+
+import ecom.TestUtils.Base;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
+
+public class WebviewTest extends Base {
+
+	@Test
+	public void webview() throws InterruptedException {
+		
+		try {
+			log.fillform();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		andact.scrollToElement("Jordan 6 Rings");
+		procat.selectProduct("Jordan 6 Rings");
+		procat.navigateToCart();
+		Thread.sleep(2000);
+		cp.verifyCartPage("Cart");
+		cp.verifyProduct("Jordan 6 Rings");
+		Thread.sleep(2000);
+		cp.acceptTermsNdCond();
+		cp.proceedToWebView();
+		Thread.sleep(10000);
+		andact.selectWindow("WEBVIEW_com.androidsample.generalstore");
+		driver.findElement(By.name("q")).sendKeys("Automation");
+		driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+		driver.pressKey(new KeyEvent(AndroidKey.BACK));
+		driver.context("NATIVE_APP");
+	}
+}

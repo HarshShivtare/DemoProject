@@ -1,0 +1,93 @@
+package ecom.TestUtils;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Properties;
+
+import org.generalstore.pageobjects.CartPage;
+import org.generalstore.pageobjects.LoginFormPage;
+import org.generalstore.pageobjects.ProductCatologue;
+import org.generalstore.utils.AndroidActions;
+import org.generalstore.utils.AppiumUtils;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
+//import java.net.URL;
+import org.testng.annotations.Test;
+
+import com.google.common.collect.ImmutableMap;
+
+import ecom.global.setup.Login;
+
+public class Base extends AppiumUtils{
+	public AndroidDriver driver;
+	public static AppiumDriverLocalService service;
+	public static LoginFormPage login;
+	public static ProductCatologue procat;
+	public static CartPage cp;
+	public static AndroidActions andact;
+	public static Login log;
+	
+	@BeforeClass(alwaysRun=true)
+	public void startServer() throws URISyntaxException, IOException, InterruptedException {
+
+		Properties prop = new Properties();
+		prop.load(new FileReader(System.getProperty("user.dir")+"\\src\\main\\java\\resources\\data.properties"));
+		
+		service = startServer(prop.getProperty("ipAddress"),Integer.parseInt(prop.getProperty("port")));
+		Thread.sleep(6500);
+		service.start();
+
+		String gen = System.getProperty("user.dir")+"\\src\\test\\java\\resources\\General-Store.apk";
+		String api = System.getProperty("user.dir")+"\\src\\test\\java\\resources\\ApiDemos-debug.apk";
+		
+		UiAutomator2Options options = new UiAutomator2Options();
+		options.setDeviceName(prop.getProperty("AndroidDeviceName"));
+		//options.setApp(api);
+		options.setApp(gen);
+		//options.setApp(System.getProperty("user.dir")+"\\src\\test\\java\\resources\\General-Store.apk");
+		//options.setChromedriverExecutable("F:\\Softwares\\Drivers\\chromedriver-83.exe");
+		
+		URI uri = new URI("http://127.0.0.1:4723");
+		URL url = uri.toURL();
+
+		driver = new AndroidDriver(url, options);
+		
+		login = new LoginFormPage(driver);
+		andact = new AndroidActions(driver);
+		procat = new ProductCatologue(driver);
+		cp = new CartPage(driver);
+		log = new Login(driver);
+	}
+
+	public void longpress(WebElement ele) {
+		((JavascriptExecutor) driver).executeScript("mobile: longClickGesture",
+				ImmutableMap.of("elementId", ((RemoteWebElement) ele).getId(), "duration", 2000));
+	}
+
+	public void dragNdrop(WebElement source, int x, int y) {
+		((JavascriptExecutor) driver).executeScript("mobile: dragGesture",
+				ImmutableMap.of("elementId", ((RemoteWebElement) source).getId(), "endX", x, "endY", y));
+	}
+
+	@AfterClass(alwaysRun=true)
+
+	public void teardown() {
+		driver.quit();
+		service.close();
+	}
+	
+}

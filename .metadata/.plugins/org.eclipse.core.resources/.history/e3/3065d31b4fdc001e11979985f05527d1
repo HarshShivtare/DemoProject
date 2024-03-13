@@ -1,0 +1,61 @@
+package org.generalstore.utils;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+
+public class AppiumUtils {
+	public static AppiumDriverLocalService service;
+	
+	public AppiumDriverLocalService startServer(String Ipaddr, int port) {
+		
+		File path = new File("C:\\Users\\Lenovo\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js");
+		
+		service = new AppiumServiceBuilder()
+				 .withAppiumJS(path)
+				.withIPAddress(Ipaddr).usingPort(port).build();
+		return service;
+	}
+	
+	public void waitForEle(AppiumDriver driver, WebElement ele, String title) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOf(ele));
+		wait.until(ExpectedConditions.attributeContains(ele, "text", title));
+	}
+
+	public List<HashMap<String, String>> getJsonData(String filepath) throws IOException {
+		//System.getProperty("user.dir"+"\\src\\test\\java\\testData\\credentials.json")
+		// convert json file to json string
+		File load = new File(filepath);
+		String jsonContent = FileUtils.readFileToString(load,StandardCharsets.UTF_8);
+		
+		ObjectMapper obmap = new ObjectMapper();
+		List<HashMap<String,String>> data = obmap.readValue(jsonContent,
+				new TypeReference<List<HashMap<String,String>>>() {
+		}) ;
+		return data;
+	}
+	
+	public void screenshot(String test, AndroidDriver driver) {
+		File src = driver.getScreenshotAs(OutputType.FILE);
+		String dest = System.getProperty("user.dir")+"\\reports"+test+".png";
+		FileUtils.copyFile(src, dest);
+	}
+}

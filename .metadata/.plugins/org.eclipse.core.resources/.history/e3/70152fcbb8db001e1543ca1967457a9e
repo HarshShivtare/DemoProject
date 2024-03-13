@@ -1,0 +1,22 @@
+package test;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Datess {
+
+	public static void main(String[] args) {
+		
+		Date d = new Date();
+		System.out.println(d.toString());
+		System.out.println(d.getDate());
+		System.out.println(d.getHours());
+		System.out.println(d.getDay());
+		System.out.println(d.getMinutes());
+		System.out.println(d.getTime());
+		
+		SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
+		System.out.println(s.format(d));
+		
+	}
+}

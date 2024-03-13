@@ -1,0 +1,86 @@
+package ecom.TestUtils;
+
+import java.io.IOException;
+
+import org.generalstore.utils.AppiumUtils;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+
+import io.appium.java_client.android.AndroidDriver;
+
+import com.aventstack.extentreports.ExtentReports;
+
+public class Listenerss extends AppiumUtils implements ITestListener{
+	ExtentReports ext = ExtentReporterT.getReporter();
+	ExtentTest test;
+	AndroidDriver driver;
+	@Override
+	public void onTestStart(ITestResult result) {
+		// TODO Auto-generated method stub
+		
+		test = ext.createTest(result.getMethod().getMethodName());
+	}
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		// TODO Auto-generated method stub
+		test.log(Status.PASS,"Test Passed");
+	}
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+		// TODO Auto-generated method stub
+		try {
+			driver = (AndroidDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			test.addScreenCaptureFromPath(screenshot(result.getMethod().getMethodName(),driver),result.getMethod().getMethodName());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		test.log(Status.FAIL, MarkupHelper.createLabel(result.getName() + result.getThrowable(), ExtentColor.RED));
+		//test.fail(result.getThrowable());
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		// TODO Auto-generated method stub
+		test.log(Status.SKIP, MarkupHelper.createLabel(result.getName() + result.getThrowable(), ExtentColor.YELLOW));
+	}
+
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		// TODO Auto-generated method stub
+		System.out.println("TestFailedButWithinSuccessPercentage : " + ext.createTest(result.getName()));
+	}
+
+	@Override
+	public void onTestFailedWithTimeout(ITestResult result) {
+		// TODO Auto-generated method stub
+	test.generateLog(Status.FAIL, result.getName());
+	}
+
+	@Override
+	public void onStart(ITestContext context) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onFinish(ITestContext context) {
+		// TODO Auto-generated method stub
+		ext.getStats()
+		ext.flush();
+	}
+
+}

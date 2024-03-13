@@ -1,0 +1,104 @@
+package eComProject;
+
+import java.time.Duration;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import org.generalstore.pageobjects.CartPage;
+import org.generalstore.pageobjects.LoginFormPage;
+import org.generalstore.pageobjects.ProductCatologue;
+import org.generalstore.utils.AndroidActions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import Mobile.Base;
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
+
+public class Test1 extends Base {
+	
+	@Test
+	public void fillform() throws InterruptedException {
+		
+		driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
+		login.inputName("Harshal");
+		driver.hideKeyboard();
+		login.selectGender("female");
+		login.selectCountry("Argentina");
+		login.login();
+		Thread.sleep(2000);
+	}
+
+	@Test
+	public void errorToast() throws InterruptedException {
+		login = new LoginFormPage(driver);
+		driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
+		driver.hideKeyboard();
+		login.selectGender("female");
+		login.selectCountry("Argentina");
+		login.login();
+		Thread.sleep(1000);
+		login.verifytoastmessage("Please enter your name");
+	}
+
+	@Test
+	public void addtoCart() throws InterruptedException {
+
+		fillform();
+		andact.scrollToElement("Jordan 6 Rings");
+		procat.selectProduct("Jordan 6 Rings");
+		procat.navigateToCart();
+		Thread.sleep(2000);
+		cp.verifyCartPage("Cart");
+		cp.verifyProduct("Jordan 6 Rings");
+	}
+
+	@Test
+	public void productAmount() throws InterruptedException {
+		//CartPage cp = new CartPage(driver);
+		ProductCatologue pc = new ProductCatologue(driver);
+		
+		fillform();
+		procat.selectMultiProduct();
+		Thread.sleep(3000);
+		
+		cp.verifyCartPage("Cart");
+		
+		double totalprice= cp.sumOfProductPrices();
+		double totalamount = Double.parseDouble(driver
+				.findElement(AppiumBy.id("com.androidsample.generalstore:id/totalAmountLbl")).getText().substring(1));
+
+		
+		Assert.assertEquals(totalprice, totalamount);
+	}
+
+	@Test
+	public void webview() throws InterruptedException {
+		addtoCart();
+		Thread.sleep(2000);
+		WebElement terms = driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/termsButton"));
+		longpress(terms);
+		driver.findElement(AppiumBy.id("android:id/button1")).click();
+		driver.findElement(AppiumBy.className("android.widget.CheckBox")).click();
+		driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/btnProceed")).click();
+		Thread.sleep(5000);
+
+		Set<String> contexts = driver.getContextHandles();
+		for (String context : contexts) {
+			System.out.println(context);
+			// NATIVE_APP
+			// WEBVIEW_com.androidsample.generalstore
+		}
+		Thread.sleep(3000);
+		driver.context("WEBVIEW_com.androidsample.generalstore");
+		driver.findElement(By.name("q")).sendKeys("Automation");
+		driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+		driver.pressKey(new KeyEvent(AndroidKey.BACK));
+		driver.context("NATIVE_APP");
+	}
+}

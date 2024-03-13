@@ -1,0 +1,43 @@
+package eComProject;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import ecom.TestUtils.Base;
+
+public class LoginParaTest extends Base {
+
+	// Parse Json file to Json string using commons-io dependency
+	// Json string is converted to hashmap using jackson-databind dependency
+	// this hashmap is used in testcases using dataprovider
+	
+	@BeforeMethod
+	public void homeScreen() throws InterruptedException {
+		Thread.sleep(2000);
+		login.startActivity();
+	}
+	
+	@DataProvider(name="data")
+	public Object[][] getData() throws IOException {
+		
+		List<HashMap<String, String>> data = login.getJsonData(System.getProperty("user.dir")+"//src//test//java//testData//credentials.json");
+		return new Object[][] {{data.get(0)},{data.get(1)}};
+	}
+	
+	@Test(dataProvider="data")
+	public void fillformWithParam(HashMap<String, String> input) throws InterruptedException {
+
+		driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
+		login.inputName(input.get("name"));
+		driver.hideKeyboard();
+		login.selectGender(input.get("gender"));
+		login.selectCountry(input.get("country"));
+		login.login();
+	}
+}

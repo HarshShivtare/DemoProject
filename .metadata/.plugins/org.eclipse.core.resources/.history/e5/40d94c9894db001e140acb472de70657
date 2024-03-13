@@ -1,0 +1,18 @@
+package ecom.global.setup;
+
+import java.time.Duration;
+import ecom.TestUtils.Base;
+
+public class Login extends Base {
+	
+	public void fillform() throws InterruptedException {
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		login.inputName("harsh");
+		driver.hideKeyboard();
+		login.selectGender("female");
+		login.selectCountry("Argentina");
+		login.login();
+		Thread.sleep(2000);
+	}
+}
